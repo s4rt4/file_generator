@@ -30,7 +30,7 @@ A simple yet powerful in-browser tool for quickly creating, editing, and downloa
 
 * **Frontend:** HTML5, CSS3, JavaScript (ES6+)
 * **Core Library:** [CodeMirror](https://codemirror.net/)
-* **Icons:** Custom PNG icon pack & [Font Awesome](https://fontawesome.com/)
+
 
 ---
 
@@ -40,18 +40,22 @@ This is a static web project. No complex installation or build steps are require
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+    git clone [https://github.com/s4rt4/file_generator.git](https://github.com/s4rt4/file_generator.git)
     ```
-    *(Jangan lupa ganti URL di atas dengan URL repo Anda)*
 
 2.  **Navigate to the directory:**
     ```bash
-    cd your-repository-name
+    cd file_generator
     ```
 
 3.  **Run the application:**
     * Simply open the `index.html` file directly in your web browser.
-    * For the best experience (especially ensuring icon paths work correctly), run it through a local server (like the `http-server` NPM package or Laragon).
+    * For the best experience (especially ensuring icon paths and the file-opening logic work correctly), run it through a local server. If you have Python installed, you can run:
+        ```bash
+        # For Python 3
+        python -m http.server
+        ```
+        Then open `http://localhost:8000` in your browser.
 
 ---
 
@@ -62,10 +66,10 @@ This is a static web project. No complex installation or build steps are require
     * Type your desired name in the **"File Name"** input.
     * Select your file type from the **"File Type"** dropdown to enable the correct syntax highlighting.
 3.  **Edit & Find:**
-    * Use the **"Search"** bar (top right) to find text instantly.
-    * Use the **"Search & Replace"** tools (bottom left) for more advanced edits.
+    * Use the **"Search"** bar (top right) to find text instantly as you type.
+    * Use the **"Search & Replace"** tools (in the sidebar) for more advanced edits.
 4.  **Save or Copy:**
     * Click **"Download"** to save the file to your computer.
     * Click **"Copy"** (top right) to copy the entire content to your clipboard.
 5.  **Toggle Theme:**
-    * Use the **"Dark Mode"** toggle (bottom left) to switch between light and dark themes.
+    * Use the **"Dark Mode"** toggle (bottom left) to switch between light and dark themes. Your choice will be remembered.

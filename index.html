@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Generator</title>
+  
+  <link rel="stylesheet" href="style.css?v=1.12">
+  <link rel="stylesheet" href="sidebar.css?v=1.12">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/loadmode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/meta.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/searchcursor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/search.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/selection/active-line.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/matchesonscrollbar.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="sidebar-is-left">
+
+  <div id="sidebar" class="sidebar-left">
+    
+    <div class="sidebar-logo">
+      <img src="icons/file_generator_logo.png" alt="File Generator Logo">
+      <h2>File Generator</h2>
+    </div>
+
+    <div class="sidebar-controls">
+      <label for="filename">File Name</label>
+      <input type="text" id="filename" placeholder="example">
+      <label>File Type</label>
+      <div class="dropdown">
+        <button id="dropdownBtn">
+          <span class="btn-label-group">
+            <img src="icons/txt.png" alt=".txt icon" style="width:20px; height:20px;"> .txt
+          </span> 
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+        <input type="hidden" id="filetype" value="txt">
+        
+        <div id="dropdownMenu" class="dropdown-content">
+          <div data-value="txt" data-label=".txt"><img src="icons/txt.png"> .txt</div>
+          <div data-value="md" data-label=".md"><img src="icons/Markdown.png"> .md</div>
+          <div data-value="html" data-label=".html"><img src="icons/html5.png"> .html</div>
+          <div data-value="css" data-label=".css"><img src="icons/css3.png"> .css</div>
+          <div data-value="js" data-label=".js"><img src="icons/js.png"> .js</div>
+          <div data-value="ts" data-label=".ts"><img src="icons/typescript.png"> .ts</div>
+          <div data-value="json" data-label=".json"><img src="icons/json.png"> .json</div>
+          <div data-value="xml" data-label=".xml"><img src="icons/xml.png"> .xml</div>
+          <div data-value="sql" data-label=".sql"><img src="icons/sql.png"> .sql</div>
+          <div data-value="py" data-label=".py"><img src="icons/Python.png"> .py</div>
+          <div data-value="java" data-label=".java"><img src="icons/java.png"> .java</div>
+          <div data-value="kt" data-label=".kt"><img src="icons/kotlin.png"> .kt (Kotlin)</div>
+          <div data-value="c" data-label=".c"><img src="icons/c.png"> .c</div>
+          <div data-value="cpp" data-label=".cpp"><img src="icons/cpp.png"> .cpp</div>
+          <div data-value="cs" data-label=".cs"><img src="icons/csharp.png"> .cs (C#)</div>
+          <div data-value="php" data-label=".php"><img src="icons/php.png"> .php</div>
+          <div data-value="rb" data-label=".rb"><img src="icons/Ruby.png"> .rb (Ruby)</div>
+          <div data-value="swift" data-label=".swift"><img src="icons/swift.png"> .swift</div>
+          <div data-value="dart" data-label=".dart"><img src="icons/dart.png"> .dart</div>
+          <div data-value="go" data-label=".go"><img src="icons/go.png"> .go</div>
+          <div data-value="rs" data-label=".rs"><img src="icons/rush.png"> .rs (Rust)</div>
+          <div data-value="lua" data-label=".lua"><img src="icons/lua.png"> .lua</div>
+          <div data-value="sh" data-label=".sh"><img src="icons/sh.png"> .sh</div>
+          <div data-value="bat" data-label=".bat"><img src="icons/bat.png"> .bat</div>
+          <div data-value="dockerfile" data-label="Dockerfile"><img src="icons/docker.png"> Dockerfile</div>
+          <div data-value="toml" data-label=".toml"><img src="icons/toml.png"> .toml</div>
+          <div data-value="yml" data-label=".yml"><img src="icons/yml.png"> .yml</div>
+          <div data-value="tex" data-label=".tex"><img src="icons/latex.png"> .tex (LaTeX)</div>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button id="openFileBtn">
+          <i class="fa-solid fa-folder-open"></i> Open File
+        </button>
+        <button id="downloadBtn">
+          <i class="fa-solid fa-download"></i> Download
+        </button>
+      </div>
+      <input type="file" id="fileOpener" hidden>
+    </div>
+    
+    <div class="sidebar-advanced-tools">
+      <label>Search & Replace</label>
+      <div class="replace-form">
+        <label for="searchInput">Search for</label>
+        <input type="text" id="searchInput">
+        <label for="replaceInput">Replace with</label>
+        <input type="text" id="replaceInput">
+        <div class="button-group">
+          <button id="replaceBtn"><i class="fa-solid fa-file-pen"></i> Replace</button>
+          <button id="replaceAllBtn"><i class="fa-solid fa-file-lines"></i> Replace All</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-toggle-container">
+      <label for="themeToggle" class="theme-toggle-label">
+        <i class="fa-solid fa-moon"></i>
+        <span>Dark Mode</span>
+      </label>
+      <label class="theme-toggle-switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+  </div>
+
+  <div id="content-wrapper">
+    <div class="content-header">
+      <label for="content">File Content</label>
+      <div class="content-actions">
+        <div class="realtime-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="realtimeSearchInput" placeholder="Search...">
+        </div>
+        <button id="copyBtn"><i class="fa-solid fa-copy"></i> Copy</button>
+      </div>
+    </div>
+    <textarea id="content" placeholder="Write your code or text here..."></textarea>
+  </div>
+  
+  <script src="script.js?v=1.12"></script>
+</body>
+</html>

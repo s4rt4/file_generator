@@ -1,0 +1,40 @@
+/* 1. Variabel Ukuran */
+:root {
+  --sidebar-width-v: 300px; 
+  --sidebar-border: var(--color-border);
+  --sidebar-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 2. Style Dasar Sidebar */
+#sidebar {
+  position: fixed;
+  background: var(--color-surface); 
+  /* z-index: 1000; <-- BARIS INI TELAH DIHAPUS (INI PENYEBAB BUG) */
+  border-color: var(--color-border);
+  box-shadow: var(--sidebar-shadow);
+  
+  /* STATIS DI KIRI */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--sidebar-width-v);
+  border-right: 1px solid var(--sidebar-border);
+  
+  /* Layout internal sidebar */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Style Konten Wrapper (STATIS) */
+#content-wrapper {
+  /* STATIS di sebelah sidebar */
+  margin-left: var(--sidebar-width-v);
+  
+  /* Menggunakan Flexbox untuk editor full-height */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  
+  /* Pastikan padding sudah benar */
+  box-sizing: border-box;
+}

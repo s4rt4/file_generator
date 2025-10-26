@@ -1,0 +1,459 @@
+/* Import Font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display.swap');
+
+/* ======================= */
+/* VARIABEL WARNA (TEMA) */
+/* ======================= */
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #dee2e6;
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-primary: #007bff;
+  --color-primary-hover: #0069d9;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --border-radius: 8px;
+}
+
+body.theme-dark {
+  --color-bg: #1a1a1e;
+  --color-surface: #25252a;
+  --color-border: #404040;
+  --color-text: #e1e1e1;
+  --color-text-muted: #8c8c8c;
+  --color-primary: #3a9bff;
+  --color-primary-hover: #5aaaff;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* ======================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0; 
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ======================= */
+/* STYLE SIDEBAR      */
+/* ======================= */
+#sidebar {
+  padding: 20px; 
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 4px 16px 4px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 16px;
+  flex-shrink: 0; 
+  transition: border-color 0.2s;
+}
+.sidebar-logo img {
+  width: 40px;
+  height: 40px;
+}
+.sidebar-logo h2 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.sidebar-controls {
+  padding: 0 4px; 
+  flex-shrink: 0;
+}
+
+#sidebar label {
+  font-weight: 500;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+#sidebar input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s;
+}
+
+#sidebar input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Tombol Sidebar Umum */
+#sidebar button {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 12px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+/* Tombol Download (Primer) */
+#sidebar button#downloadBtn {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 500;
+  border: 1px solid var(--color-primary);
+}
+#sidebar button#downloadBtn:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Tombol Open/Replace (Sekunder) */
+#sidebar button#openFileBtn,
+#sidebar button#replaceBtn,
+#sidebar button#replaceAllBtn {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+}
+#sidebar button#openFileBtn:hover,
+#sidebar button#replaceBtn:hover,
+#sidebar button#replaceAllBtn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+/* BARU: Bagian Advanced Tools */
+.sidebar-advanced-tools {
+  padding: 0 4px;
+  flex-shrink: 0;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  transition: border-color 0.2s;
+}
+
+/* BARU: Form Search/Replace */
+.replace-form label {
+  margin-top: 10px;
+  font-size: 13px;
+}
+.replace-form input {
+  margin-top: 0;
+}
+.replace-form .button-group {
+  margin-top: 12px;
+}
+
+/* ======================= */
+/* STYLE KONTEN       */
+/* ======================= */
+#content-wrapper {
+  padding: 24px 32px;
+  padding-bottom: 24px;
+  background-color: var(--color-bg);
+  transition: background-color 0.2s;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+#content-wrapper label {
+  font-weight: 500;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+  margin: 0;
+}
+
+.content-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* DIUBAH: Tombol Copy (dibuat lebih menonjol) */
+#copyBtn {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+#copyBtn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+}
+#copyBtn .fa-check {
+  color: #28a745;
+}
+
+/* BARU: Search Bar Realtime */
+.realtime-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.realtime-search-wrapper .fa-magnifying-glass {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+#realtimeSearchInput {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 8px 12px 8px 34px; /* Padding kiri untuk ikon */
+  font-size: 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+  min-width: 220px;
+}
+#realtimeSearchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+  background-color: var(--color-surface);
+}
+#realtimeSearchInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.CodeMirror {
+  flex-grow: 1; 
+  height: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  border: 1px solid var(--color-border); 
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s;
+}
+
+/* BARU: Style untuk highlight search */
+.cm-search-match {
+  background-color: #fde073; /* Kuning highlight */
+  border-bottom: 1px solid #c9a500;
+}
+body.theme-dark .cm-search-match {
+  background-color: #a37b00;
+  border-bottom: 1px solid #ffc107;
+  color: #e1e1e1 !important;
+}
+
+/* ======================= */
+/* STYLE DROPDOWN     */
+/* ======================= */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+#dropdownBtn {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  transition: all 0.2s;
+  margin-top: 0;
+}
+
+#dropdownBtn .fa-caret-down {
+  margin-left: auto;
+}
+
+.btn-label-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+.btn-label-group img,
+#dropdownBtn > .btn-label-group > img { /* PERBAIKAN: Target ikon di tombol default */
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+#dropdownBtn:focus,
+.dropdown.show #dropdownBtn {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 6px;
+  padding: 4px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dropdown-content div {
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  border-radius: 4px;
+  margin: 2px 0;
+  color: var(--color-text);
+}
+
+.dropdown-content div img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.dropdown-content div:hover {
+  background: var(--color-bg);
+}
+
+.dropdown.show .dropdown-content {
+  display: block;
+}
+
+/* ======================= */
+/* STYLE TOGGLE TEMA     */
+/* ======================= */
+.theme-toggle-container {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.theme-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  margin: 0;
+}
+
+.theme-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.theme-toggle-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-border);
+  transition: 0.4s;
+  border-radius: 24px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* HAPUS: Style Dialog Lama (tidak dipakai) */
+.CodeMirror-dialog {
+ display: none !important;
+}
